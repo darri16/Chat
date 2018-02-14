@@ -13,17 +13,10 @@ describe('LoginForm tests', ()=> {
         mockSocketServer.on('connection', socket => {
             socket.on('adduser',(username,fn) => {
                 socket.emit('adduser',username);
-
-
             });
         });
-
-
-
     });
 
     afterEach(() => {
-
     });
-    
 });*/
