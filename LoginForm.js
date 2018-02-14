@@ -10,24 +10,16 @@ class LoginForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
-
     }
     componentDidCatch(error,info) {
         console.log(error, info);
     }
-
-
-
-
 
     handleSubmit(event) {
         event.preventDefault();
 
         const {socket} = this.context;
         const {nickname} = this.state;
-
-
 
         socket.emit('adduser',nickname,function(isUser) {
             if(isUser) {
@@ -41,27 +33,21 @@ class LoginForm extends React.Component {
             }else {
                 this.setState({error:'Username is Taken'});
             }
-
         }.bind(this));
         console.log(nickname);
-
     };
 
     handleChange(event) {
         this.setState({nickname:event.target.value});
     }
     render () {
-
         const {nickname,error} = this.state;
         return (
-
             <div className="login">
                 <form onSubmit={this.handleSubmit} className="login-form" >
-
                     <label htmlFor='nickname'>
                         <h2>Insert a nickname</h2>
                     </label>
-
                     <input
                         ref={(input)=>{ this.textInput = input }}
                         type='text'
@@ -71,14 +57,10 @@ class LoginForm extends React.Component {
                         placeholder={'MyUsername'}
                     />
                     <div className='error'>{error ? error:null}</div>
-
                 </form>
-
             </div>
-
         );
     };
-
 }
 
 LoginForm.contextTypes = {
